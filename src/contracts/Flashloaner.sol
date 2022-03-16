@@ -12,7 +12,7 @@ interface Receiver {
 }
 
 contract Flashloaner {
-    // immutable address for owner/manager
+    // immutable address for owner/manager aka da bawssssss
     address public immutable boss;
 
     // errors
@@ -21,7 +21,7 @@ contract Flashloaner {
 
     // events
     event Flashloanooor(Receiver receiver, ERC20 token, uint256 amount);
-    event Withdraw(Receiver receiver, ERC20 token, uint256 amount);
+    event Withdraw(ERC20 token, uint256 amount);
 
     // mapping to hold fees per token
     mapping(ERC20 => uint256) fees;
@@ -30,7 +30,6 @@ contract Flashloaner {
         boss = msg.sender;
     }
 
-    // function to calc fees
     function requestFlashLoan(
         Receiver receiver,
         ERC20 token,
@@ -61,6 +60,7 @@ contract Flashloaner {
     // function to withdraw fees (by owner)
     function withdraw(ERC20 token, uint256 amount) public payable {
         if (msg.sender != boss) revert UserNoBoss();
+        emit Withdraw(token, amount);
         token.transfer(msg.sender, amount);
     }
 }

@@ -2,8 +2,9 @@
 pragma solidity 0.8.10;
 
 import "ds-test/test.sol";
+import "../contracts/Flashloaner.sol";
 
-contract ContractTest is DSTest {
+contract FlashloanerTest is DSTest {
     function setUp() public {}
 
     function testExample() public {
